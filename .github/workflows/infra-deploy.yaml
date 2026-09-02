@@ -3,14 +3,14 @@ name: AWS Deploy Infrastructure
 on:
   push:
     branches:
-      - main
+      - teste-infra-workflow #trocar depois para main (teste-infra para main *ou para a branch default do projeto prefeitura*)
 
 permissions:
   contents: read
   id-token: write
 
-env:
-  AWS_REGION: us-east-1
+#env:
+#  AWS_REGION: us-east-1
 
 jobs:
   deploy:

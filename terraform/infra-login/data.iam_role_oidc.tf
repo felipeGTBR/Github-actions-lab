@@ -13,10 +13,10 @@ data "aws_iam_policy_document" "this" {
       identifiers = [aws_iam_openid_connect_provider.this.arn]
     }
 
-    condition {
+    condition { 
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.trust_policy.github_repo}:ref:refs/heads/main"]
+      values   = ["repo:${var.trust_policy.github_repo_teste}:ref:refs/heads/teste-infra-workflow"] #lembrar de trocar a branch aqui mesmo (teste-infra para main *ou para a branch default do projeto prefeitura*)# utilizando um repositorio de testes para validar se tudo está funcionando corretamente antes de liberar para o repositório principal. (por isso o github_repo_teste)
     }
 
     condition {

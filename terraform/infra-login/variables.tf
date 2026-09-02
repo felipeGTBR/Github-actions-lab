@@ -80,14 +80,17 @@ variable "iam_role" {
   }
 }
 
+# utilizando um repositorio de testes para validar se tudo está funcionando corretamente antes de liberar para o repositório principal. (por isso o github_repo_teste)
 variable "trust_policy" {
   type = object({
     description = string
     github_repo = string
+    github_repo_teste = string
   })
   default = {
     description = "Permite que apenas o repositório do GitHub Actions da prefeitura possa assumir a role"
     github_repo = "prefeitura-digital-g8-aponti/grupo8-prefeitura"
+    github_repo_teste = "felipeGTBR/Github-actions-lab" # utilizando um repositorio de testes para validar se tudo está funcionando corretamente antes de liberar para o repositório principal. (por isso o github_repo_teste)
   }
 }
 
