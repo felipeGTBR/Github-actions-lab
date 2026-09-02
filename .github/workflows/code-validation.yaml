@@ -1,0 +1,50 @@
+name: code validation pipeline terraform
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.16.0
+      
+      - name: set up TFlint
+        uses: terraform-linters/setup-tflint@v6
+        with:
+          cache: true
+      
+      - name: checkov
+        uses: bridgecrewio/checkov-action@57ea60dec05e84665799965433cda081debeb1c3 #v12.1347.0
+
+      - name: comments on PR
+        uses: mshick/add-pr-comment@3f6e586f745cf5c7b574120ea77297303ed5ee76 #v3.12.0
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        if: github.event_name == 'pull_request'
+        run: terraform apply -auto-approve
