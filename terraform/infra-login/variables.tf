@@ -116,11 +116,15 @@ variable "dynamodb_table" {
     billing_mode  = string
     hash_key      = string
     hash_key_type = string
+    point-in-time-recovery = bool
+    server-side-encryption = bool
   })
   default = {
     name          = "LockTable-Login-Prefeitura"
     billing_mode  = "PAY_PER_REQUEST"
     hash_key      = "LockId"
     hash_key_type = "S"
+    point-in-time-recovery = true #ou enabled (caso de erro no true), para habilitar o point-in-time-recovery
+    server-side-encryption = true
   }
 }
