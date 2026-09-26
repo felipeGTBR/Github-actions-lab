@@ -98,10 +98,12 @@ variable "s3_bucket" {
   type = object({
     name       = string
     versioning = string
+    public_access_block = bool
   })
   default = {
     name       = "remote-backend-login-prefeitura-digital"
     versioning = "Enabled"
+    public_access_block = false
   }
 
   validation {
