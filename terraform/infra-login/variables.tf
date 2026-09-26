@@ -103,7 +103,7 @@ variable "s3_bucket" {
   default = {
     name       = "remote-backend-login-prefeitura-digital"
     versioning = "Enabled"
-    public_access_block = false
+    public_access_block = true
   }
 
   validation {
