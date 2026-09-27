@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "this" {
   #checkov:skip=CKV_AWS_18: este bucket é utilizado para armazenar o backend remoto do terraform, então não precisa do logging habilitado
-  #checkov:skip=CKV_AWS_119: não precisaa de CMK no dynamodb, pois ele só é utilizado como state locking
+  #checkov:skip=CKV_AWS_119: não precisa de CMK no dynamodb, pois ele só é utilizado como state locking
   #checkov:skip=CKV_AWS_144: pelo mesmo motivo do comentário acima, não precisa do cross region replication habilitado
   #checkov:skip=CKV2_AWS_61: por enquanto, não precisa de lifecycle rules
   #checkov:skip=CKV_AWS_145: como estou utilizando AES256, não preciso do KMS habilitado
