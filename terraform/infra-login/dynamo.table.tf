@@ -6,6 +6,7 @@ resource "aws_dynamodb_table" "this" {
     enabled = var.dynamodb_table.point-in-time-recovery
   }
   server_side_encryption {
+  #checkov:skip=CKV_AWS_119: não precisa de CMK no dynamodb, pois ele só é utilizado como state locking
     enabled = var.dynamodb_table.server-side-encryption
   }
 
