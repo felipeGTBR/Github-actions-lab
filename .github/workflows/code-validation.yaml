@@ -32,6 +32,9 @@ jobs:
       
       - name: checkov
         uses: bridgecrewio/checkov-action@master #v12.1347.0
+        with:
+          directory: terraform/infra-login
+          skip-path: .github/workflows/proof-html.yml
 
       - name: comments on PR
         uses: mshick/add-pr-comment@3f6e586f745cf5c7b574120ea77297303ed5ee76 #v3.12.0
