@@ -3,6 +3,7 @@ resource "aws_s3_bucket" "this" {
   #checkov:skip=CKV_AWS_144: pelo mesmo motivo do comentário acima, não precisa do cross region replication habilitado
   #checkov:skip=CKV_AWS_61: por enquanto, não precisa de lifecycle rules
   #checkov:skip=CKV_AWS_145: como estou utilizando AES256, não preciso do KMS habilitado
+  #checkov:skip=CKV_AWS_62: não preciso de notification configuration neste bucket
   bucket = var.s3_bucket.name
 }
 
